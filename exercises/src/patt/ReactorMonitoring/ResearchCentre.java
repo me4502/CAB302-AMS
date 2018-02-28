@@ -26,9 +26,7 @@ public class ResearchCentre extends RadiationMonitor {
 	/**
 	 * Generates a report of the current moving average, updated by a new
 	 * observation. The moving average is calculated by summing all observations
-	 * made so far, and dividing by the quantity of observations so far. Example
-	 * output: 2017-09-23 00:10:19 :: moving average :: 5.255743899997138 :: Centre
-	 * for Nuclear Research
+	 * made so far, and dividing by the quantity of observations so far.
 	 */
 	public String generateReport(double observation) {
 		return null;

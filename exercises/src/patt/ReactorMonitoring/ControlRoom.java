@@ -26,8 +26,7 @@ public class ControlRoom extends RadiationMonitor {
 	}
 
 	/**
-	 * Generates a report based on the observation. Example output: 2017-09-23
-	 * 00:10:19 :: WARNING :: 9.162469512617625 :: Reactor A Control Room
+	 * Generates a report based on the observation.
 	 */
 	@Override
 	public String generateReport(double observation) {
