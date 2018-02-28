@@ -2,36 +2,39 @@ package coll.Matrix;
 
 import java.util.*;
 
-public class Matrix implements Iterable {
+public class Matrix<T> implements Iterable<T> {
+
+    private int rows, columns;
 
 	/**
 	 * Construct a Matrix object.
 	 * 
-	 * @param rows. An int that specifies the number of rows.
-	 * @param columns. An int that specifies the number of columns.
+	 * @param rows An int that specifies the number of rows.
+	 * @param columns An int that specifies the number of columns.
 	 */
-	public Matrix() {
-
+	public Matrix(int rows, int columns) {
+        this.rows = rows;
+        this.columns = columns;
 	}
 
 	/**
 	 * Assigns a value to a given cell, specified by its row, column coordinates.
 	 * 
-	 * @param row. An int for the row index with 0-based indexing.
-	 * @param column. An int for the column index with 0-based indexing.
-	 * @param value. A generic value to be assigned to the given cell.
+	 * @param row An int for the row index with 0-based indexing.
+	 * @param column An int for the column index with 0-based indexing.
+	 * @param value A generic value to be assigned to the given cell.
 	 */
-	public insert() {
+	public void insert(int row, int column, T value) {
 
 	}
 
 	/**
 	 * Gets the value at a given cell, specified by its row, column coordinates.
-	 * @param row. An int for the row index with 0-based indexing.
-	 * @param column. An int for the column index with 0-based indexing.
+	 * @param row An int for the row index with 0-based indexing.
+	 * @param column An int for the column index with 0-based indexing.
 	 * @return value. A generic value located at the given cell.
 	 */
-	public get() {
+	public T get(int row, int column) {
 
 	}
 
@@ -39,16 +42,17 @@ public class Matrix implements Iterable {
 	 * Gets the total number of cells in the matrix.
 	 * @return an int equal to the total number of cells in the matrix.
 	 */
-	public size() {
-
+	public int size() {
+        return this.rows * this.columns;
 	}
 	
 	/**
 	 * Converts the matrix to String format.
 	 * @return a String representation of the matrix.
 	 */
-	public toString() {
-
+	@Override
+	public String toString() {
+        return null;
 	}
 
 	/**
@@ -56,8 +60,9 @@ public class Matrix implements Iterable {
 	 * order of row by row. Within each row the order is left to right.
 	 * @return an Iterator object for the matrix.
 	 */
-	public Iterator iterator() {
-
+	@Override
+	public Iterator<T> iterator() {
+        return null;
 	}
 
 }

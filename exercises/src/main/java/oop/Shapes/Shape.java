@@ -1,7 +1,7 @@
 package oop.Shapes;
 
 public interface Shape {
-	public double volume();
+	double volume();
 
-	public double surfaceArea();
+	double surfaceArea();
 }
