@@ -35,7 +35,7 @@ public class Matrix<T> implements Iterable<T> {
 	 * @return value. A generic value located at the given cell.
 	 */
 	public T get(int row, int column) {
-
+		return null;
 	}
 
 	/**
