@@ -1,6 +1,13 @@
 package coll.UserAccounts;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
+
+    public static Set<String> usernames = new HashSet<>();
+
+	private String username, password;
 
 	/**
 	 * Constructs a user with a given username and password. If a user is
@@ -8,13 +15,21 @@ public class User {
 	 * 
 	 * @param username
 	 * @param password
-	 * @throws Exception.
+	 * @throws Exception
 	 *             Throws a UserException if the username or password is invalid
 	 *             (use the below methods badUsername and badPassword to assist you
 	 *             with this).
 	 */
 	public User(String username, String password) throws Exception {
-
+		if (badUsername(username)) {
+			throw new UserException();
+		}
+		this.username = username;
+		if (badPassword(password)) {
+			throw new UserException();
+		}
+		this.password = password;
+        usernames.add(username);
 	}
 
 	/**
@@ -23,7 +38,7 @@ public class User {
 	 * @return
 	 */
 	public String getUsername() {
-		return null;
+		return this.username;
 	}
 
 	/**
@@ -32,7 +47,7 @@ public class User {
 	 * @return
 	 */
 	public String getPassword() {
-		return null;
+		return this.password;
 	}
 
 	/**
@@ -42,7 +57,7 @@ public class User {
 	 * @return true if the username already exist, false otherwise.
 	 */
 	public static boolean badUsername(String username) {
-		return false;
+		return usernames.contains(username);
 	}
 
 	/**
@@ -53,7 +68,7 @@ public class User {
 	 *         otherwise.
 	 */
 	public static boolean badPassword(String password) {
-		return false;
+		return password.length() < 8;
 	}
 
 }

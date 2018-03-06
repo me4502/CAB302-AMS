@@ -1,10 +1,12 @@
 package coll.Matrix;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Matrix<T> implements Iterable<T> {
 
     private int rows, columns;
+    private T[] array;
 
 	/**
 	 * Construct a Matrix object.
@@ -15,6 +17,7 @@ public class Matrix<T> implements Iterable<T> {
 	public Matrix(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
+        this.array = (T[]) new Object[this.rows * this.columns];
 	}
 
 	/**
@@ -25,7 +28,7 @@ public class Matrix<T> implements Iterable<T> {
 	 * @param value A generic value to be assigned to the given cell.
 	 */
 	public void insert(int row, int column, T value) {
-
+		this.array[column + (row * this.columns)] = value;
 	}
 
 	/**
@@ -35,7 +38,7 @@ public class Matrix<T> implements Iterable<T> {
 	 * @return value. A generic value located at the given cell.
 	 */
 	public T get(int row, int column) {
-		return null;
+		return this.array[column + (row * this.columns)];
 	}
 
 	/**
@@ -52,7 +55,15 @@ public class Matrix<T> implements Iterable<T> {
 	 */
 	@Override
 	public String toString() {
-        return null;
+        StringBuilder builder = new StringBuilder();
+        for (int row = 0; row < rows; row ++) {
+            List<String> strings = new ArrayList<>();
+            for (int column = 0; column < columns; column ++) {
+                strings.add(String.valueOf(get(row, column)));
+            }
+            builder.append(strings.stream().collect(Collectors.joining("\t"))).append("\n");
+        }
+	    return builder.toString();
 	}
 
 	/**
@@ -62,7 +73,7 @@ public class Matrix<T> implements Iterable<T> {
 	 */
 	@Override
 	public Iterator<T> iterator() {
-        return null;
+        return Arrays.asList(this.array).iterator();
 	}
 
 }

@@ -10,12 +10,19 @@ public class GUI {
 	 * UserException then print "Unauthorized access!" If the withdraw fails due to
 	 * a FundsException then print "Insufficient funds!"
 	 * 
-	 * @param user. The user that is attempting to execute the transfer.
-	 * @param b1. The bank account that the funds are being transferred from.
-	 * @param b2. The bank account that the funds are being transferred to.
-	 * @param amount. The amount of money to be transferred in $.
+	 * @param user The user that is attempting to execute the transfer.
+	 * @param b1 The bank account that the funds are being transferred from.
+	 * @param b2 The bank account that the funds are being transferred to.
+	 * @param amount The amount of money to be transferred in $.
 	 */
 	public static void transfer(User user, BankAccount b1, BankAccount b2, double amount) {
-
+		try {
+			b1.withdraw(user, amount);
+			b2.deposit(amount);
+		} catch (FundsException e) {
+			System.out.println("Insufficient funds!");
+		} catch (UserException e) {
+			System.out.println("Unauthorized access!");
+		}
 	}
 }
