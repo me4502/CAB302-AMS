@@ -1,20 +1,26 @@
 package patt.ReactorMonitoring;
 
 import java.util.Observable;
+import java.util.Random;
 
 public class RadiationSensor extends Observable {
+
+	private String location;
+	private double radiation;
+	private Random random;
 
 	/**
 	 * Constructs a RadiationSensor object
 	 * 
-	 * @param location.
+	 * @param location
 	 *            An arbitrary location.
-	 * @param seed.
+	 * @param seed
 	 *            A seed for the random number generator used to simulate radiation
 	 *            readings.
 	 */
 	public RadiationSensor(String location, int seed) {
-
+		this.location = location;
+		this.random = new Random(seed);
 	}
 
 	/**
@@ -23,7 +29,7 @@ public class RadiationSensor extends Observable {
 	 * @return location
 	 */
 	public String getLocation() {
-		return null;
+		return this.location;
 	}
 
 	/**
@@ -32,7 +38,7 @@ public class RadiationSensor extends Observable {
 	 * @return radiation
 	 */
 	public double getRadiation() {
-		return 0;
+		return this.radiation;
 	}
 
 	/**
@@ -40,7 +46,9 @@ public class RadiationSensor extends Observable {
 	 * the change.
 	 */
 	public void readRadiation() {
-
+		this.radiation = this.random.nextDouble() * 10.0;
+		setChanged();
+		notifyObservers(this.radiation);
 	}
 
 }

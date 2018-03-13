@@ -3,52 +3,29 @@ package patt.Coffee;
 import java.util.ArrayList;
 
 public class Coffee {
-	String type;
-	double cost;
-	ArrayList<String> ingredients;
+	private CoffeeFactory.Type type;
+	private ArrayList<CoffeeFactory.Ingredient> ingredients;
 
-	public Coffee(ArrayList<String> ingredients, String type) {
+	public Coffee(ArrayList<CoffeeFactory.Ingredient> ingredients, CoffeeFactory.Type type) {
 		this.type = type;
 
 		this.ingredients = ingredients;
-
-		double sum = 0;
-		for (String ingredient : ingredients) {
-			if (ingredient == "espresso") {
-				sum += 0.5;
-			} else if (ingredient == "milk") {
-				sum += 1.0;
-			} else if (ingredient == "chocolate") {
-				sum += 1.5;
-			} else {
-				sum += 0;
-			}
-		}
-		this.cost = sum;
-
 	}
 
 	public double getCost() {
-		return cost;
+		return ingredients.stream().map(CoffeeFactory.Ingredient::getCost).mapToDouble(d -> d).sum();
 	}
 
 	public double getPrice() {
-		if (this.type.equals("long black")) {
-			return 4.0;
-		} else if (this.type.equals("flat white")) {
-			return 5.0;
-		} else if (this.type.equals("mocha")) {
-			return 6.0;
-		}
-		return 0;
+		return this.type.getPrice();
 	}
 
 	public String listIngredients() {
-		String string = "";
-		for (String ingredient : ingredients) {
-			string += ingredient;
-			string += "\n";
+		StringBuilder string = new StringBuilder();
+		for (CoffeeFactory.Ingredient ingredient : ingredients) {
+			string.append(ingredient.toString());
+			string.append("\n");
 		}
-		return string;
+		return string.toString();
 	}
 }

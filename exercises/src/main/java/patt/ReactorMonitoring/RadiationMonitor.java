@@ -7,14 +7,16 @@ import java.util.Observer;
 
 public abstract class RadiationMonitor implements Observer {
 
+	private String location;
+
 	/**
 	 * Constructs a RadiationMonitor object.
 	 * 
-	 * @param location.
+	 * @param location
 	 *            An arbitrary location.
 	 */
 	public RadiationMonitor(String location) {
-
+        this.location = location;
 	}
 
 	/**
@@ -23,7 +25,7 @@ public abstract class RadiationMonitor implements Observer {
 	 * @return location
 	 */
 	public String getLocation() {
-		return null;
+		return this.location;
 	}
 
 	/**
@@ -34,10 +36,9 @@ public abstract class RadiationMonitor implements Observer {
 	/**
 	 * Generates a report based on the observation.
 	 * 
-	 * @param observation
 	 * @return a report
 	 */
-	public abstract String generateReport(double observation);
+	public abstract String generateReport();
 
 	/**
 	 * Gets the current time.
